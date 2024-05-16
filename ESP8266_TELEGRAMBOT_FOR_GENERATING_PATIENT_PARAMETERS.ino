@@ -10,16 +10,15 @@
 #define DHTPIN 4 
 #define DHTTYPE DHT11  
 
-const char* ssid = "akil";
-const char* password = "akil@2004";
+const char* ssid = "DHANUSH";
+const char* password = "DHANUSH";
 
 #define BOTtoken "7197022155:AAFSmM09XqZy16Nt9WFe2epvvj-G6hAqn-c"  
 
 
 #define CHAT_ID "1595272548"
 
-float temperatureC = 36.00;
-int bpm = 60 ;
+
 #ifdef ESP8266
   X509List cert(TELEGRAM_CERTIFICATE_ROOT);
 #endif
@@ -39,14 +38,14 @@ void handleNewMessages(int numNewMessages) {
   Serial.println(String(numNewMessages));
 
   for (int i=0; i<numNewMessages; i++) {
-    // Chat id of the requester
+   
     String chat_id = String(bot.messages[i].chat_id);
     if (chat_id != CHAT_ID){
       bot.sendMessage(chat_id, "Unauthorized user", "");
       continue;
     }
     
-    // Print the received message
+   
     String text = bot.messages[i].text;
     Serial.println(text);
 
@@ -67,84 +66,74 @@ void handleNewMessages(int numNewMessages) {
           String msg = "TOKEN : 1 \nTemperature is ";
           msg += msg.concat(temperatureC);
           msg += " C\n";
-          //msg += "Humidity is ";
-          //msg += msg.concat(humidity);
+          msg += "Humidity is ";
+          msg += msg.concat(humidity);
           msg +=" %\n";
           msg += "Heart Rate is ";
           msg += msg.concat(bpm);
-           msg +=" BPM\n";
+          msg +=" BPM\n";
           bot.sendMessage(chat_id,msg, ""); 
-          temperatureC = 36.40;
-          //humidity = 51.51;
-          bpm = 73;
+         
       }
       if (text == "/2")
       {  
-          bpm++;
+         
           String msg = "TOKEN : 2 \nTemperature is ";
           msg += msg.concat(temperatureC);
           msg += " C\n";
-          //msg += "Humidity is ";
-          //msg += msg.concat(humidity);
+          msg += "Humidity is ";
+          msg += msg.concat(humidity);
           msg +=" %\n";
           msg += "Heart Rate is ";
           msg += msg.concat(bpm);
            msg +=" BPM\n";
           bot.sendMessage(chat_id,msg, ""); 
-          temperatureC = 37.80;
-          //humidity = 59.12;
-          bpm = 77;
+          
       }
       if (text == "/3")
       {  
-          temperatureC = temperatureC + 1.05;
+          
           String msg = "TOKEN : 3 \nTemperature is ";
           msg += msg.concat(temperatureC);
           msg += " C\n";
-          //msg += "Humidity is ";
-          //msg += msg.concat(humidity);
+          msg += "Humidity is ";
+          msg += msg.concat(humidity);
           msg +=" %\n";
           msg += "Heart Rate is ";
           msg += msg.concat(bpm);
            msg +=" BPM\n";
           bot.sendMessage(chat_id,msg, ""); 
-          temperatureC = 36.58;
-          //humidity = 60.59;
-          bpm = 95;
+         
       }
       if (text == "/4")
       {  
-          //humidity = humidity + 2.07;
+          
           String msg = "TOKEN : 4 \nTemperature is ";
           msg += msg.concat(temperatureC);
           msg += " C\n";
-          //msg += "Humidity is ";
-          //msg += msg.concat(humidity);
+          msg += "Humidity is ";
+          msg += msg.concat(humidity);
           msg +=" %\n";
           msg += "Heart Rate is ";
           msg += msg.concat(bpm);
            msg +=" BPM\n";
           bot.sendMessage(chat_id,msg, ""); 
-          temperatureC = 39.49;
-          //humidity = 61.11;
-          bpm = 79;
+         
       }
       if (text == "/5")
       {  
-          bpm++;
+         
           String msg = "TOKEN : 5 \nTemperature is ";
           msg += msg.concat(temperatureC);
           msg += " C\n";
-          //msg += "Humidity is ";
-          //msg += msg.concat(humidity);
+          msg += "Humidity is ";
+          msg += msg.concat(humidity);
           msg +=" %\n";
           msg += "Heart Rate is ";
           msg += msg.concat(bpm);
            msg +=" BPM\n";
           bot.sendMessage(chat_id,msg, "");
-          temperatureC = 36.03; 
-          //humidity = 57.09;
-          bpm = 82;
+        
       }
 
     
